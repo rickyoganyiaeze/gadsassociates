@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - GADS Associates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="shortcut icon" href="gadslogo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --accent-color: #f1c40f;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color:#28a745 !important;
+        }
+        
+        .nav-link {
+            color: #28a745 !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(45deg, rgba(40, 167, 69, 0.9), rgba(241, 196, 15, 0.8)), url('ican_preview.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            background-color: transparent;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+        
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item a:hover {
+            color: white;
+        }
+        
+        .breadcrumb-item.active {
+            color: white;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        /* Services Overview */
+        .services-overview {
+            background-color: var(--light-color);
+        }
+        
+        .service-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .service-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Service Cards */
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .service-features li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .btn-service {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-service:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color)), url('');
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-cta {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+        }
+        
+        .btn-cta:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            text-decoration: none;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 80px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-cta {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="gadslogo.png" alt="" width="70" height="80"> GADS Associates
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #28a745;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="our-team.html">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                                                           <li class="nav-item">
+                        <a class="nav-link" href="jamb-registration.html">Jamb</a>
+                    </li>
+                                       <li class="nav-item">
+                        <a class="nav-link" href="ican-registration.html">ICAN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Our Services</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Services Overview Section -->
+    <section class="section services-overview">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="service-intro">
+                <p>At GADS Associates, we offer a comprehensive range of educational services designed to help students achieve their academic and professional goals. Our services are delivered by experienced professionals using modern teaching methods and state-of-the-art facilities.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="">
+                            <img src="ican_preview.jpeg" alt="ICAN Coaching">
+                        </div>
+                        <div class="service-content">
+                            <h3>ICAN Coaching</h3>
+                            <p>We provide comprehensive coaching for all levels of ICAN examinations, helping students become qualified chartered accountants.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Professional tutors with ICAN certification</li>
+                                <li><i class="fas fa-check-circle"></i> Comprehensive study materials</li>
+                                <li><i class="fas fa-check-circle"></i> Regular mock examinations</li>
+                                <li><i class="fas fa-check-circle"></i> Flexible class schedules</li>
+                            </ul>
+                            <a href="ican-registration.html" class="btn btn-service">Register for ICAN</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="waec.jpeg" alt="JAMB Registration">
+                        </div>
+                        <div class="service-content">
+                            <h3>WAEC Registration</h3>
+                            <p>We offer easy WAEC registration for differents levels that helps in qualifying students everywhere into different schools and institutes.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Qualified an verified exams for a better result</li>
+                                <li><i class="fas fa-check-circle"></i> free from delays of results</li>
+                                <li><i class="fas fa-check-circle"></i> exams that veries different levels</li>
+                                <li><i class="fas fa-check-circle"></i> faster approach</li>
+                            </ul>
+                            <a href="jamb-registration.html" class="btn btn-service">Register for JAMB</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="jamb_registration.jpg" alt="JAMB Registration">
+                        </div>
+                        <div class="service-content">
+                            <h3>JAMB Registration</h3>
+                            <p>We offer seamless JAMB UTME registration services with expert guidance throughout the process.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Hassle-free registration process</li>
+                                <li><i class="fas fa-check-circle"></i> Expert guidance on course selection</li>
+                                <li><i class="fas fa-check-circle"></i> Document verification and upload</li>
+                                <li><i class="fas fa-check-circle"></i> Registration confirmation support</li>
+                            </ul>
+                            <a href="jamb-registration.html" class="btn btn-service">Register for JAMB</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="ican_coaching.jpeg">
+                        </div>
+                        <div class="service-content">
+                            <h3>CBT Practice</h3>
+                            <p>Our Computer-Based Test practice sessions prepare students for the actual examination environment.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check-circle"></i> Real exam simulation</li>
+                                <li><i class="fas fa-check-circle"></i> Thousands of practice questions</li>
+                                <li><i class="fas fa-check-circle"></i> Performance analysis and feedback</li>
+                                <li><i class="fas fa-check-circle"></i> Time management techniques</li>
+                            </ul>
+                            <a href="download.html" class="btn btn-service">Download Practice App</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">GADS Associates</div>
+                    <p>Your trusted partner for JAMB registration, ICAN coaching, and computer training.</p>
+                    <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.541062570112!2d3.248547674045468!3d6.452909923981597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b871f502cfc0f%3A0x1b2c114a9a028fe8!2sGADS%20College!5e0!3m2!1sen!2sng!4v1754619099995!5m2!1sen!2sng" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="download.html">Download App</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="jamb-registration.html">JAMB</a></li>
+                                <li><a href="ican-registration">ICAN</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt"></i>HQ. 1A ONOTAMERE CL. MOBILE ROAD, ILE-EPO, SATELLITE TOWN. <br>BRANCH: 9 LAWANSON STR, IJEGUN EGBA.</p>
+
+                            <p><i class="fas fa-phone"></i> +234 803 961 6235 <br>
+                            +234 703 042 2064</p>
+                            <p><i class="fas fa-envelope"></i>gadsacademy2020@gmail.com</p>
+                        </div>
+                         <h5>Follow us on</h5>
+                        <a class="fab fa-facebook-f" href="https://www.facebook.com/GadsAcademy100/" style="color: white; text-decoration: none;"></a>
+                        <a class="fab fa-instagram" href="https://www.instagram.com/p/C_gHrU-oy_4/" style="margin-left: 1rem; color: white; text-decoration: none;"></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 GADS Associates. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348039616235" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Wait for the document to be fully loaded
+        $(document).ready(function() {
+            // Initialize Bootstrap collapse
+            $('.navbar-toggler').on('click', function() {
+                $('#navbarNav').collapse('toggle');
+            });
+            
+            // Close navbar when a link is clicked (for mobile)
+            $('.navbar-nav .nav-link').on('click', function() {
+                if ($(window).width() < 992) {
+                    $('.navbar-toggler').click();
+                }
+            });
+            
+            // Add scroll effect to navbar
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

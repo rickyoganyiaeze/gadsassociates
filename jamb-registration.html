@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAMB Registration - GADS Associates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="gadslogo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --accent-color: #f1c40f;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #28a745 !important;
+        }
+
+        .nav-link {
+            color: #28a745 !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(45deg, rgba(40, 167, 69, 0.9), rgba(241, 196, 15, 0.8)), url('jamb_registration.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item a:hover {
+            color: white;
+        }
+
+        .breadcrumb-item.active {
+            color: white;
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Registration Process */
+        .process-steps {
+            background-color: var(--light-color);
+        }
+
+        .step-box {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .step-box h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .step-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Registration Form */
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--dark-color);
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Payment Info */
+        .payment-info {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .payment-info h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-info h4 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .payment-info ul {
+            padding-left: 20px;
+        }
+
+        .payment-info li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            text-decoration: none;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 80px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+            box-shadow: 0 0 10px #333;
+        }
+
+        .popup-content button {
+            margin-top: 20px;
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="gadslogo.png" alt="" width="70" height="80"> GADS Associates
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color: #28a745;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="our-team.html">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="download.html">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jamb-registration.html">Jamb</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ican-registration.html">ICAN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>JAMB Registration</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="services.html">Services</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">JAMB Registration</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Registration Process Section -->
+    <section class="section process-steps">
+        <div class="container">
+            <h2 class="section-title">Registration Process</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h4>Fill the Form</h4>
+                        <p>Complete the registration form below with your accurate personal and academic information.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="step-box">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Receive Confirmation</h4>
+                        <p>Get an email confirmation with your registration details and payment instructions.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="step-box">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>Send Payment Evidence</h4>
+                        <p>Send proof of payment to our WhatsApp number or email address for verification.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="step-box">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4>Admin Approval</h4>
+                        <p>Our admin team will verify your payment and complete your JAMB registration process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Registration Form Section -->
+    <form class="form-container" action="https://formspree.io/f/mqabooyp" method="POST">
+        <h2>GADS Academy Registration Form</h2>
+
+        <!-- SECTION 1: PERSONAL DATE -->
+        <h4>Personal Data</h4>
+
+        <div class="form-group">
+            <label class="form-label">Surname</label>
+            <input type="text" class="form-control" name="Surname" required />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">First Name:</label>
+            <input type="text" class="form-control" name="FirstName" required />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Other Names:</label>
+            <input type="text" class="form-control" name="OtherNames" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Date of Birth:</label>
+            <input type="date" class="form-control" name="DOB" required />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Tel:</label>
+            <input type="text" class="form-control" name="Tel" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email:</label>
+            <input type="text" class="form-control" name="Email" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Nationality:</label>
+            <input type="tel" class="form-control" name="Nationality" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">State of Origin:</label>
+            <input type="text" class="form-control" name="State of Origin" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">L.G.A:</label>
+            <input type="text" class="form-control" name="L.G.A" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Contact Address:</label>
+            <input type="text" class="form-control" name="Contact Address" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Religion:</label>
+            <input type="text" class="form-control" name="Religion" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Denomination:</label>
+            <input type="text" class="form-control" name="Denomination" />
+        </div>
+
+
+
+        <!-- SECTION 2: EDUCATION DATE -->
+        <h4>Education Date</h4>
+        <div class="form-group">
+            <label class="form-label">Name of Present/Last School Attend:</label>
+            <input type="text" class="form-control" name="Name of Present/Last School Attend" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Class</label>
+            <input type="text" class="form-control" name="Class" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Examination Entered For</label>
+            <input type="text" class="form-control" name="Examination Entered For" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">JAMB Reg. No</label>
+            <input type="text" class="form-control" name="JambReg" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Subjects Entered for</label>
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <input type="text" class="form-control" name="Subjects Entered" />
+            <div>
+
+                <!-- Add more as needed -->
+            </div>
+        </div>
+
+        <!-- SECTION 3: PARENT/GUARDIAN -->
+        <h4>Parent / Guardian</h4>
+
+        <div class="form-group">
+            <label class="form-label">Names: Mr/Mrs:</label>
+            <input type="text" class="form-control" name="Names: Mr/Mrs:" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Contact Address:</label>
+            <input type="text" class="form-control" name="Contact Address" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Occupation:</label>
+            <textarea class="form-control" name="Occupation"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Office Address:</label>
+            <input type="text" class="form-control" name="Office Address" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Tel No:</label>
+            <input type="text" class="form-control" name="Tel No" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Relationship with Student</label>
+            <input type="text" class="form-control" name="Relationship with Student" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Any Health Conditions?</label><br />
+            <input type="radio" name="health" value="Yes" /> Yes
+            <input type="radio" name="health" value="No" /> No
+        </div>
+        <P>Declearation by Parents/Guardians</P>
+        <div class="form-group">
+            <label class="form-label">I, Mr/Mrs</label>
+            <input type="text" class="form-control" name="Declearation" />
+            <label class="form-label">hereby declares that Master/Miss</label>
+            <input type="text" class="form-control" name="Declearation" />
+            <label class="form-label">is my</label>
+            <input type="text" class="form-control" name="Declearation" />
+            <label class="form-label">and i commit myself to ensuring his/her sponsorship throughout his/her stay in
+                GADS ACADEMY, I shall also take responsiblility for his/her misbehaviour <br> <input type="checkbox"
+                    name="declearation" /></label>
+        </div>
+        <button type="submit" class="btn-submit">Submit Registration</button>
+    </form>
+
+    <div class="payment-info">
+        <h4><i class="fas fa-info-circle"></i> Payment Information</h4>
+        <ul>
+            <li>JAMB Registration Fee: ₦0,00</li>
+            <li>Service Charge: ₦0,000</li>
+            <li>Reading Text: ₦,00</li>
+            <li><strong>Total: ₦0,00</strong></li>
+            <li>Payment can be made via bank transfer or POS at our center</li>
+        </ul>
+        <a href="https://wa.me/2348039616235" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Contact Us on WhatsApp
+        </a>
+    </div>
+
+    <div class="form-group mt-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+            <label class="form-check-label" for="terms">
+                I confirm that all information provided is accurate and I agree to the terms and conditions.
+            </label>
+        </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">GADS Associates</div>
+                    <p>Your trusted partner for JAMB registration, ICAN coaching, and computer training.</p>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.541062570112!2d3.248547674045468!3d6.452909923981597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b871f502cfc0f%3A0x1b2c114a9a028fe8!2sGADS%20College!5e0!3m2!1sen!2sng!4v1754619099995!5m2!1sen!2sng"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <!--Custom Popup -->
+                <div id="popup" class="popup">
+                    <div class="popup-content">
+                        <p>Message sent successfully!</p>
+                        <button onclick="closePopup()">Close</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="download.html">Download App</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="jamb-registration.html">JAMB</a></li>
+                            <li><a href="ican-registration">ICAN</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt"></i>HQ. 1A ONOTAMERE CL. MOBILE ROAD, ILE-EPO, SATELLITE
+                                TOWN. <br>BRANCH: 9 LAWANSON STR, IJEGUN EGBA.</p>
+
+                            <p><i class="fas fa-phone"></i> +234 803 961 6235 <br>
+                                +234 703 042 2064</p>
+                            <p><i class="fas fa-envelope"></i>gadsacademy2020@gmail.com</p>
+                        </div>
+                        <h5>Follow us on</h5>
+                        <a class="fab fa-facebook-f" href="https://www.facebook.com/GadsAcademy100/"
+                            style="color: white; text-decoration: none;"></a>
+                        <a class="fab fa-instagram" href="https://www.instagram.com/p/C_gHrU-oy_4/"
+                            style="margin-left: 1rem; color: white; text-decoration: none;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 GADS Associates. All Rights Reserved.</p>
+        </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348039616235" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Wait for the document to be fully loaded
+        $(document).ready(function () {
+            // Initialize Bootstrap collapse
+            $('.navbar-toggler').on('click', function () {
+                $('#navbarNav').collapse('toggle');
+            });
+
+            // Close navbar when a link is clicked (for mobile)
+            $('.navbar-nav .nav-link').on('click', function () {
+                if ($(window).width() < 992) {
+                    $('.navbar-toggler').click();
+                }
+            });
+
+            // Add scroll effect to navbar
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+        });
+        const form = document.getElementById("contact-form");
+        const popup = document.getElementById("popup");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                form.reset();
+                popup.style.display = "flex"; // Show popup
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        });
+
+        function closePopup() {
+            popup.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
